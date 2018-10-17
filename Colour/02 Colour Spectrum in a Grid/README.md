@@ -1,26 +1,37 @@
-# Introducing HSB Colour
+# Colour Spectrum in a Grid
 
-###Setting up HSB colour mode in p5.js
+In this sketch we want to create a grid of rectangles where the hue increments from left to right, and our saturation increments from bottom to top.
+
+ To do this, we should scale our colour hue to the canvas width, our saturation to the canvas height, and our brightness to 100. This scales our colour perfectly to the canvas dimensions.
+
 ```js
+var Xstep;
+var Ystep;
+
 function setup() {
-	createCanvas(500, 500);
-	colorMode(HSB, 100, 100, 100);
+	createCanvas(600, 400);
+	colorMode(HSB, width, height, 100);
 	noStroke();
-	rectMode(CENTER);
 }
 ```
-Until now, I have been working with the RGB colour mode which creates colour by mixing red, green, blue, and alpha values. The HSB colour mode instead uses hue, saturation, and brightness values. The parameters following HSB define the range of the hue, saturation and brightness.
+
+Xstep and Ystep will determine the height and width of the rectangles and are set to our mouseX and mouseY (+2 so they're not too small!) 
+
+The nested for loop creates row after row of rectangles, making our grid shape. The higher Xstep (based on how far our mouseX is to the right), the less the loop will iterate therefore creating less rectangles in the x direction. Same idea goes for the y axis. 
+
+The hue of the rectangles increments from left to right with Xstep too. The saturation begins fully-saturated, and decrements from top to bottom with Ystep
 
 ```js
-function draw(){
-	var scaledMouseX = mouseX/width * 100;
-	background(scaledMouseX, 100, 100);
+function draw(){	
+	Xstep = mouseX + 2;
+	Ystep = mouseY + 2;
 
-	fill(100 - scaledMouseX, 100, 100);
-	rect(width/2, height/2, mouseX + 1, mouseX + 1);
+	for(var Ygrid = 0; Ygrid < height; Ygrid += Ystep){
+		for(var Xgrid = 0; Xgrid < width; Xgrid += Xstep){
+			fill(Xgrid, height - Ygrid, 100);
+			rect(Xgrid, Ygrid, Xstep, Ystep);
+		}
+	}
 
-}	
+}
 ```
-In the draw function, which loops while the sketch is running, scaledMouseX calculates the mouse X within a range of 100 (The same as what we defined our HSB range to be.) The background colour's hue values are then set to the scaled mouse X value 0 - 100.
-
-Finally, a rectangle is drawn in the middle of the screen. It's colour is set to be the contrast of the background with values of 100 - 0. The rectangle's size is determined by the mouse X coordinates.
