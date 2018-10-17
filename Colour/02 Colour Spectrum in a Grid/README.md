@@ -16,8 +16,11 @@ function draw(){
 	var scaledMouseX = mouseX/width * 100;
 	background(scaledMouseX, 100, 100);
 
-	fill(scaledMouseX -500, 100, 100);
-	rect(width/2, height/2, 50, 50);
-}
+	fill(100 - scaledMouseX, 100, 100);
+	rect(width/2, height/2, mouseX + 1, mouseX + 1);
+
+}	
 ```
-In the draw function, which loops while the sketch is running, 
+In the draw function, which loops while the sketch is running, scaledMouseX calculates the mouse X within a range of 100 (The same as what we defined our HSB range to be.) The background colour's hue values are then set to the scaled mouse X value 0 - 100.
+
+Finally, a rectangle is drawn in the middle of the screen. It's colour is set to be the contrast of the background with values of 100 - 0. The rectangle's size is determined by the mouse X coordinates.
