@@ -1,9 +1,9 @@
 # Interpolating Colour Pallet
 
-##### Introduction
+### Introduction
 In this example we want to create two columns of colour on the left and right of the canvas, and interpolate the colours from left to right, meaning we want to visualize the transition of colour from the left to right.
 
-##### Setup
+### Setup
 First we want to create two arrays for each column of colour on the left and right. numberOfCols will vary based on our mouseX coordinates which will be seen later on. Our rows will be set to 10.
 
 ```js
@@ -22,7 +22,7 @@ function setup() {
 }
 ```
 
-##### Draw
+### Draw
 Here we are mapping the mouseX to range from 1 - 50 and using that value as our number of columns. We then calculate the tile width based on that value (Our tile height will stay the same throughout).
 
 ```js
@@ -34,7 +34,7 @@ function draw() {
     tileHeight = height/numOfRows;
 ```
 
-##### Nested loop
+### Nested loop
 Now we draw out rows of rectangles using a nested loop. Start colour, end colour and amount are calculated for each column iteration, and are used as arguments to lerpColor which takes two colours and the amount (between 0 and 1) to interpolate them. The amount maps our current gridX value between 0 and 1. Finally a rectangle is drawn with this colour using tileWidth (based on mouseX) and tileHeight.
 
 ```js
@@ -53,6 +53,7 @@ Now we draw out rows of rectangles using a nested loop. Start colour, end colour
 
 }
 ```
+### Shake Colours
 The function shakeColors will change the colours in the left and right colour arrays when the mouse is released, causing our program to draw new colours and interpolations.
 
 ```js
