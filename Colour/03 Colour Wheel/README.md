@@ -18,6 +18,7 @@ function setup() {
 }
 
 ```
+
 360 divided by our segmentCount will give us a value for our angle to increase by after each segment. We start our fan point in the middle, then since we know our radius (hypothenues) and angle, we can use cosine and sine to find our x and y points for the outer point in our triangle fan shape.
 
 ```js
@@ -40,6 +41,7 @@ function draw() {
     
 }
 ```
+
 Finally, we add a switch statement to increase or decrease the amount of segments in our wheel when a number on the keyboard is pressed. 
 
 ```js
