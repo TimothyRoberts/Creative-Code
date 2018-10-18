@@ -10,7 +10,6 @@ function setup() {
 	createCanvas(800, 500);
 	colorMode(HSB);
 	shakeColors();
-	// noLoop();
 	noStroke();
 
 }
@@ -18,7 +17,6 @@ function setup() {
 function draw() {
 
 	numOfCols = map(mouseX, 0, width, 1, 50);
-	// numOfRows = mouseY;
 
 	tileWidth = width/numOfCols;
 	tileHeight = height/numOfRows;
@@ -31,8 +29,6 @@ function draw() {
 			var endColor = colorsRight[gridY];
 
 			fill(lerpColor(startColor, endColor, amount));
-
-			// fill(colorsLeft[gridX]);
 			rect(tileWidth * gridX, tileHeight * gridY, tileWidth, tileHeight);
 		}
 
@@ -45,7 +41,4 @@ function shakeColors() {
 		colorsLeft[i] = color(random(0, 255), random(0, 255), random(0, 255));
 		colorsRight[i] = color(random(0, 255), random(0, 255), random(0, 255));
 	}
-
-	console.log(colorsLeft);
-
 }
