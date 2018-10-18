@@ -1,4 +1,4 @@
-# Interpolating Colour Pallete
+# Interpolating Colour Pallet
 
 ##### Introduction
 In this example we want to create two columns of colour on the left and right of the canvas, and interpolate the colours from left to right, meaning we want to visualize the transition of colour from the left to right.
