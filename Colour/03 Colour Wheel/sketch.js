@@ -2,10 +2,11 @@
 
 var vx, vy, angleIncrement, segmentCount, radius;
 
-    segmentCount = 5;
+segmentCount = 5;
+radius = 200;
 
 function setup() {
-    createCanvas(800, 400);
+    createCanvas(600, 400);
     colorMode(HSB, 360, 100, 100);
     noStroke();
 //    background(50);
@@ -13,29 +14,20 @@ function setup() {
 }
 
 function draw() {
-    background(50, 100, 96);
-    
-    for(var j = 0; j < height; j+= 10){
-        for(var i = 0; i < width; i += 10){
-            fill(60, 100, 100);
-            ellipse(i, j, 2, 2);
-        }
-    }
-    
-//    segmentCount = map(mouseY, 0, 800, 1, 360);
-//    numberOfSteps = 50;
+    background(50, 0, 100);
+
     angleIncrement = 360/segmentCount;
-    radius = 200;
     
     beginShape(TRIANGLE_FAN);
     vertex(width/2, height/2);
-        for(var angle = 0; angle < 360; angle += angleIncrement){
-            vx = radius * cos(radians(angle)) + width/2;
-            vy = radius * sin(radians(angle)) + height/2;
-            vertex(vx, vy);
-            fill(angle, 100, 100);
-            
-        }
+
+    for(var angle = 0; angle <= 360; angle += angleIncrement){
+        vx = radius * cos(radians(angle)) + width/2;
+        vy = radius * sin(radians(angle)) + height/2;
+        vertex(vx, vy);
+        fill(angle, 100, 100);
+        
+    }
     endShape();
     
 }
