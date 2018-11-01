@@ -1,5 +1,3 @@
-//STEP 1 random colour array
-
 const hValues = [];
 const sValues = [];
 const bValues = [];
@@ -30,16 +28,14 @@ function draw() {
 		}
 
 		rectWidthSizes[i] = random(20, 50);
-
-		// fill(hValues[i], sValues[i], bValues[i]);
-		// rect(i * width/rectCount, 0, width/rectCount, height);
 	}
 
+	//calculate total for random rect width sizes (between 20 - 50 each) 
 	for (let i = 0; i < rectWidthSizes.length; i++) {
 		rectWidthTotal += rectWidthSizes[i];
 	}
 
-
+	//map random width to canvas width
 	for (let i = 0; i < rectWidthSizes.length; i++) {
 		mappedWidth = map(rectWidthSizes[i], 0, rectWidthTotal, 0, width);
 		fill(hValues[i], sValues[i], bValues[i]);
@@ -48,11 +44,7 @@ function draw() {
 
 		rectPosition += mappedWidth;
 
-		// console.log(mappedWidth);
 	}
-
-
-	
 
 
 }
